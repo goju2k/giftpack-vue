@@ -1,5 +1,5 @@
 <template>
-    <div>{{'GpNavi'}}</div>  
+    <div>{{'GpFrame'}}</div>
 </template>
 
 <script>

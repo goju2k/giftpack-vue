@@ -1,5 +1,5 @@
 <template>
-    <div>{{'GpLayout'}}</div>
+    <div>{{'GpNavigation'}}</div>  
 </template>
 
 <script>
