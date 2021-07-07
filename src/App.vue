@@ -1,9 +1,8 @@
 <template>
-    <div style="font-size:24px;padding:20px;">{{'App for Component Test...'}}</div>
-    <GpLayout></GpLayout>
-    <GpInput></GpInput>
-    <GpNavi></GpNavi>
-    <GpTransition></GpTransition>
+    <GpLayout
+    wType="centered"
+    hType="centered"
+    />
 </template>
 
 <script>
@@ -14,6 +13,10 @@ export default {
 </script>
 
 <style>
+*{
+    box-sizing: border-box;
+    margin:0px;
+}
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
