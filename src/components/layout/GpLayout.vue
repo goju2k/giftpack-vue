@@ -3,6 +3,33 @@
     <div class="gp-layout-container" :style="containerStyle">
 
         <div class="gp-layout-main"  :style="mainStyle">
+
+            <template v-for="(row, i) in slotList" :key="i">
+
+                <div class="gp-layout-row"
+                :style="(row.grow?'flex-grow:'+row.grow+';':'')
+                +(row.height?'height:'+row.height+';':'')
+                "
+                v-show="row.show !== false"
+                >
+
+                    <template v-for="(col, k) in row.cols" :key="i+'-'+k">
+
+                        <div class="gp-layout-col" 
+                        :style="(col.grow?'flex-grow:'+col.grow+';':'')
+                        +(col.width?'width:'+col.width+';':'')
+                        "
+                        v-show="col.show !== false"
+                        >
+                            <slot :name="i+'-'+k"></slot>
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </template>
+
         </div>
 
     </div>
@@ -13,6 +40,8 @@
 export default {
     name:'GpLayout',
     props:{
+
+        //width / height style
         wType:{
             type:String,
             default:'fit-screen',
@@ -29,11 +58,39 @@ export default {
             }
         },
         fixedHeight:{type:String, default:'600px'},
+
+        //frame config
+        slotInfo:{
+            type:Array,
+            default:()=>{return [
+                {
+                    cols:[{
+
+                    }],
+                },
+            ]},
+            validator:(val)=>{
+                if(!val || val.length === 0){
+                    return false;
+                }
+                for(let row of val){
+                    if(!row.cols || row.cols.length === 0){
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
     },
     created(){
         
     },
     computed:{
+        slotList(){
+            console.log('slotList reloaded...');
+            return JSON.parse(JSON.stringify(this.slotInfo));
+        },
         containerStyle(){
             
             let style = '';
@@ -114,6 +171,22 @@ export default {
     border:1px solid lightgreen;
     width:100%;
     height:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
-
+.gp-layout-row{
+    width:100%;
+    height: 100%;
+    display:flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+.gp-layout-col{
+    width:100%;
+    height:100%;
+    flex-grow: 1;
+}
 </style>
