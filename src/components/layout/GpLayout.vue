@@ -17,7 +17,7 @@ export default {
             type:String,
             default:'fit-screen',
             validator:(val)=>{
-                return ['fit-screen','centered','scroll'].indexOf(val) !== -1;
+                return ['fit-screen','center','scroll'].indexOf(val) !== -1;
             }
         },
         fixedWidth:{type:String, default:'800px'},
@@ -25,7 +25,7 @@ export default {
             type:String,
             default:'scroll',
             validator:(val)=>{
-                return ['fit-screen','centered','scroll'].indexOf(val) !== -1;
+                return ['fit-screen','center','scroll'].indexOf(val) !== -1;
             }
         },
         fixedHeight:{type:String, default:'600px'},
@@ -38,16 +38,16 @@ export default {
             
             let style = '';
 
-            if(this.wType === 'centered' || this.hType === 'centered'){
+            if(this.wType === 'center' || this.hType === 'center'){
                 style += 'display:flex;'
             }
 
             //wType
-            if(this.wType === 'centered'){
+            if(this.wType === 'center'){
                 style += 'justify-content:center;';
             }
             //hType
-            if(this.hType === 'centered'){
+            if(this.hType === 'center'){
                 style += 'align-items:center;';
             }
 
@@ -60,7 +60,7 @@ export default {
 
             //width
             style += 'width:';
-            if(this.wType === 'centered'){
+            if(this.wType === 'center'){
                 style += this.fixedWidth+';';
             }else{
                 style += '100%;';
@@ -81,7 +81,7 @@ export default {
             
             //height
             style += 'height:';
-            if(this.hType === 'centered'){
+            if(this.hType === 'center'){
                 style += this.fixedHeight+';';
             }else{
                 style += '100%;';

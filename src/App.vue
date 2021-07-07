@@ -1,7 +1,7 @@
 <template>
     <GpLayout
-    wType="centered"
-    hType="centered"
+    wType="center"
+    hType="center"
     />
 </template>
 
