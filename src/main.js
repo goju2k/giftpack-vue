@@ -6,6 +6,10 @@ const app = createApp(App)
 
 app.use(
     GiftPackVue,
+    {
+        borderStyle: 'round',
+        borderRadius: '10px',
+    },
     //{ useList: ['GpLayout'] } //options.userList
 );
 

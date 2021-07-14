@@ -2,7 +2,7 @@
 
     <div class="gp-layout-container" :style="containerStyle">
 
-        <div class="gp-layout-main"  :style="mainStyle">
+        <div class="gp-layout-main"  :style="mainStyle+_gpBorderStyle">
 
             <template v-for="(row, i) in slotList" :key="i">
 
@@ -88,7 +88,6 @@ export default {
     },
     computed:{
         slotList(){
-            console.log('slotList reloaded...');
             return JSON.parse(JSON.stringify(this.slotInfo));
         },
         containerStyle(){
@@ -162,10 +161,9 @@ export default {
 <style scoped>
 
 .gp-layout-container{
-    border:1px solid grey;
     position:relative;
-    width:100vw;
-    height:100vh;
+    width:100%;
+    height:100%;
 }
 .gp-layout-main{
     border:1px solid lightgreen;
